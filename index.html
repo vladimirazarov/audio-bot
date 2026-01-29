@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAKHINA TERMINAL</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify_content: center;
+            height: 100vh;
+            margin: 0;
+            user-select: none;
+        }
+        h1 { margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-size: 24px; }
+        .btn {
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            padding: 20px;
+            width: 80%;
+            margin: 10px 0;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 900;
+            font-size: 16px;
+            text-transform: uppercase;
+            transition: all 0.1s;
+        }
+        .btn:active { background: #ffffff; color: #000000; transform: scale(0.98); }
+        .hint { font-size: 10px; color: #666; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>ПРЕДЕЛ // УСЛУГИ</h1>
+    
+    <div class="btn" onclick="send('BEAT', 5)">CUSTOM BEAT [5€]</div>
+    <div class="btn" onclick="send('MIX', 10)">MIX & MASTER [10€]</div>
+    <div class="btn" onclick="send('RESTORE', 5)">RESTORATION [5€]</div>
+
+    <div class="hint">NO REFUNDS. PURE PHYSICS.</div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+
+        function send(service, price) {
+            tg.sendData(JSON.stringify({service: service, price: price}));
+            tg.close();
+        }
+    </script>
+</body>
+</html>
