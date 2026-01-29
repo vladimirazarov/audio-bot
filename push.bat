@@ -2,5 +2,5 @@
 git add .
 git commit -m "update"
 git push
-echo СИСТЕМА ОБНОВЛЕНА.
+echo SYSTEM UPDATED.
 pause
