@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>MAIME // ТЕРМИНАЛ</h1>
+
+    <div class="btn" onclick="send('BEAT', 5)">BEATS</div>
+    <div class="btn" onclick="send('MIX', 10)">MIX / MASTER</div>
+    <div class="btn" onclick="send('RX', 5)">RX RESTORATION</div>
+
+    <a href="result.html" class="btn">ПРИМЕРЫ РАБОТ</a>
+    <a href="help.html" class="btn btn-secondary">КАК ОПЛАТИТЬ</a>
+  </div>
+
+  <script>
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+    function send(service, price) {
+      tg.sendData(JSON.stringify({ service: service, price: price }));
+      tg.close();
+    }
+  </script>
+</body>
+
+</html>
