@@ -3,28 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=101">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>MAIME // ТЕРМИНАЛ</h1>
-    <p class="subtitle">SYSTEM ONLINE // SELECT TASK</p>
+    <h1>MAIME SERVICES</h1>
+    
+    <div class="menu-section">
+        <span class="label">УСЛУГИ:</span>
+        <a href="mix-service.html" class="btn">СВЕДЕНИЕ / МАСТЕРИНГ</a>
+    </div>
 
     <div class="menu-section">
-        <span class="label">SERVICES:</span>
-        <a href="mix-service.html" class="btn">MIX / MASTER</a>
-        </div>
-
-    <div class="menu-section" style="margin-top: 30px;">
-        <span class="label">DATABASE:</span>
+        <span class="label">ПОРТФОЛИО:</span>
         <a href="result.html" class="btn secondary-view">ПРИМЕРЫ РАБОТ</a>
     </div>
   </div>
-
-  <script>
-    let tg = window.Telegram.WebApp;
-    tg.expand();
-  </script>
+  <script>window.Telegram.WebApp.expand();</script>
 </body>
 </html>
