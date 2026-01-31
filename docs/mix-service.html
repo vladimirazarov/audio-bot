@@ -6,52 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <title>MIX / MASTER SERVICE</title>
+  <title>MIX / MASTER</title>
 </head>
 
 <body>
   <div class="container">
-    <header>
-      <h1>MIX // MASTERING</h1>
+    <header class="service-header">
+      <h1>MIX // MASTER</h1>
       <p class="subtitle">Твой звук — моя ответственность.</p>
     </header>
 
-    <div class="service-card">
-      <h3>ЧТО ВХОДИТ:</h3>
-      <ul class="features">
-        <li><span>✓</span> Чистка, полировка и реставрация вокала</li>
-        <li><span>✓</span> Тайминг (ровняю вокал по темпу)</li>
-        <li><span>✓</span> Тюнинг (Auto-Tune / Melodyne)</li>
-        <li><span>✓</span> Сведение с битом (WAV, MP3)</li>
-        <li><span>✓</span> Финальный мастеринг</li>
-      </ul>
+    <div class="content-wrapper">
+      <div class="info-section">
+        <div class="info-item"><span>—</span> Реставрация и полировка вокала</div>
+        <div class="info-item"><span>—</span> Тайминг и коррекция темпа</div>
+        <div class="info-item"><span>—</span> Тюнинг (Auto-Tune / Melodyne)</div>
+        <div class="info-item"><span>—</span> Сведение (WAV / MP3 / STEMS)</div>
+        <div class="info-item"><span>—</span> Финальный MASTER</div>
+      </div>
 
-      <div class="price-tag">ОТ 10 EUR</div>
+      <div class="order-section">
+        <div class="price-main">10 EUR</div>
+        <div class="btn action" onclick="send('MIX', 10)">ЗАКАЗАТЬ (WAV)</div>
 
-      <div class="btn action" onclick="send('MIX', 10)">ЗАКАЗАТЬ (WAV)</div>
-      <div class="btn secondary" onclick="send('STEMS', 20)">СВЕДЕНИЕ ПО СТЭМАМ (TRACKOUT) — 20 EUR</div>
+        <div class="price-divider">или</div>
 
+        <div class="price-sub">20 EUR</div>
+        <div class="btn secondary" onclick="send('STEMS', 20)">ПО СТЭМАМ (TRACKOUT)</div>
+      </div>
+
+      <div class="terms-block">
+        <h3 class="section-title">ПРАВИЛА ИГРЫ:</h3>
+        <div class="term-item">
+          <strong>• ИСХОДНИКИ</strong>
+          Выжимаю максимум из любого качества. Если запись слабая — делаю упор на стиль.
+        </div>
+        <div class="term-item">
+          <strong>• РЕЗУЛЬТАТ</strong>
+          Огромный опыт с «грязным» звуком. Смотри портфолио, чтобы понимать уровень.
+        </div>
+        <div class="term-item">
+          <strong>• REFUND</strong>
+          Возвратов нет. Технический предел исходника не является ошибкой сведения.
+        </div>
+      </div>
     </div>
-    <div class="terms-block">
-      <h3>ПРАВИЛА ИГРЫ:</h3>
-      <div class="term-item">
-        <strong>• ИСХОДНИКИ:</strong> Выжимаю максимум из любого качества. Если запись слабая — делаю упор на креативную обработку и стиль.
-      </div>
-      <div class="term-item">
-        <strong>• РЕЗУЛЬТАТ:</strong> Опыт работы с «грязным» звуком огромный. Смотри портфолио — там реальные примеры того, что можно спасти.
-      </div>
-      <div class="term-item">
-        <strong>• REFUND:</strong> Возвратов нет. Если итоговый звук ограничен качеством твоего микрофона/комнаты — это технический предел, а не ошибка сведения.
-      </div>
-    </div>
-
-    <a href="index.html" class="btn back">← НАЗАД</a>
 
     <a href="index.html" class="btn back">← НАЗАД</a>
   </div>
 
   <script>
     let tg = window.Telegram.WebApp;
+    tg.expand();
     function send(service, price) {
       tg.sendData(JSON.stringify({ service: service, price: price }));
       tg.close();
