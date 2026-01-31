@@ -41,3 +41,45 @@ h1 {
 .work-item { width: 85%; margin-bottom: 30px; border-bottom: 1px solid #222; padding-bottom: 20px; }
 .audio-label { font-size: 10px; color: #666; margin-bottom: 5px; text-transform: uppercase; }
 audio { width: 100%; filter: invert(1); margin-bottom: 10px; }
+
+.btn.action {
+    background: #ffffff; /* Белый на черном фоне или наоборот */
+    color: #000000;
+    font-weight: 800;
+    border: none;
+    transform: scale(1.05); /* Чуть больше остальных */
+}
+
+.price-tag {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: #00ff00; /* Зеленый "денежный" акцент или просто жирный белый */
+    font-family: monospace;
+}
+
+.terms-block {
+    margin-top: 30px;
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #888; /* Слегка приглушенный цвет, чтобы не отвлекать от кнопки заказа */
+}
+
+.terms-block h3 {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.term-item {
+    margin-bottom: 12px;
+}
+
+.term-item strong {
+    color: #bbb;
+    display: block;
+    margin-bottom: 2px;
+}

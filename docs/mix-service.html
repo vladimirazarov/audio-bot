@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <title>MIX / MASTER SERVICE</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>MIX // MASTERING</h1>
+      <p class="subtitle">Твой звук — моя ответственность.</p>
+    </header>
+
+    <div class="service-card">
+      <h3>ЧТО ВХОДИТ:</h3>
+      <ul class="features">
+        <li><span>✓</span> Чистка, полировка и реставрация вокала</li>
+        <li><span>✓</span> Тайминг (ровняю вокал по темпу)</li>
+        <li><span>✓</span> Тюнинг (Auto-Tune / Melodyne)</li>
+        <li><span>✓</span> Сведение с битом (WAV, MP3)</li>
+        <li><span>✓</span> Финальный мастеринг</li>
+      </ul>
+
+      <div class="price-tag">ОТ 10 EUR</div>
+
+      <div class="btn action" onclick="send('MIX', 10)">ЗАКАЗАТЬ (WAV)</div>
+      <div class="btn secondary" onclick="send('STEMS', 20)">СВЕДЕНИЕ ПО СТЭМАМ (TRACKOUT) — 20 EUR</div>
+
+    </div>
+    <div class="terms-block">
+      <h3>ПРАВИЛА ИГРЫ:</h3>
+      <div class="term-item">
+        <strong>• ИСХОДНИКИ:</strong> Выжимаю максимум из любого качества. Если запись слабая — делаю упор на креативную обработку и стиль.
+      </div>
+      <div class="term-item">
+        <strong>• РЕЗУЛЬТАТ:</strong> Опыт работы с «грязным» звуком огромный. Смотри портфолио — там реальные примеры того, что можно спасти.
+      </div>
+      <div class="term-item">
+        <strong>• REFUND:</strong> Возвратов нет. Если итоговый звук ограничен качеством твоего микрофона/комнаты — это технический предел, а не ошибка сведения.
+      </div>
+    </div>
+
+    <a href="index.html" class="btn back">← НАЗАД</a>
+
+    <a href="index.html" class="btn back">← НАЗАД</a>
+  </div>
+
+  <script>
+    let tg = window.Telegram.WebApp;
+    function send(service, price) {
+      tg.sendData(JSON.stringify({ service: service, price: price }));
+      tg.close();
+    }
+  </script>
+</body>
+
+</html>
