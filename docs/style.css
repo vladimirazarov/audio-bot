@@ -134,3 +134,12 @@ audio {
 audio::-webkit-media-controls-enclosure {
     background-color: #fff;
 }
+
+.btn-sub {
+    display: block;
+    font-size: 10px;
+    font-weight: normal;
+    opacity: 0.6;
+    margin-top: 4px;
+    letter-spacing: 1px;
+}

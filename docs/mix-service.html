@@ -1,40 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css?v=101">
+  <link rel="stylesheet" href="style.css?v=105">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <title>MIX / MASTER</title>
 </head>
+
 <body>
   <div class="container">
-    <h1>СВЕДЕНИЕ / МАСТЕР</h1>
-    <p class="subtitle">Делаю из твоей записи готовый трек</p>
+    <h1>MIX // MASTER</h1>
+    <p class="subtitle">Твой звук — моя ответственность.</p>
 
     <div class="info-section">
-      <div class="info-item">Чистка голоса от шумов</div>
-      <div class="info-item">Ровный ритм и попадание в бит</div>
-      <div class="info-item">Исправление нот (Тюн)</div>
-      <div class="info-item">Обработка эффектами</div>
-      <div class="info-item">Финальная громкость и блеск</div>
+      <div class="info-item">Реставрация и полировка вокала</div>
+      <div class="info-item">Тайминг и коррекция темпа</div>
+      <div class="info-item">Исправление фальшивых нот (тюнинг)</div>
+      <div class="info-item">Сведение (WAV / MP3 / STEMS)</div>
+      <div class="info-item">Финальный MASTER</div>
     </div>
 
     <div class="menu-section">
-      <div class="btn" onclick="send('MIX', 10)">ГОЛОС + БИТ — 10€</div>
-      <div class="btn" onclick="send('STEMS', 20)">ПО ДОРОЖКАМ — 20€</div>
-    </div>
+  <div class="btn" onclick="send('MIX', 10)">
+    ГОЛОС + БИТ
+    <span class="btn-sub">базовое сведение // 10€</span>
+  </div>
+  <div class="btn" onclick="send('STEMS', 20)">
+    ПО ДОРОЖКАМ
+    <span class="btn-sub">полный проект (stems) // 20€</span>
+  </div>
+</div>
+   
 
     <div class="terms-block">
-      <div class="term-title">ВАЖНО ЗНАТЬ:</div>
+      <div class="term-title">ПРАВИЛА ИГРЫ:</div>
+
       <div class="term-text">
-        Если запись на диктофон или плохой микрофон — сделаем стильно, но студийного качества не обещаю.
+        <strong>• ИСХОДНИКИ</strong>
+        Выжимаю максимум из любого качества. Если запись слабая — делаю упор на стиль.
       </div>
+
       <div class="term-text">
-        Работаю по предоплате. Правки включены, пока результат тебя не устроит.
+        <strong>• MP3 БИТЫ</strong>
+        Если у тебя бит в МП3 — результат будет достойным, но в пределах возможностей сжатого формата.
+      </div>
+
+      <div class="term-text">
+        <strong>• ОПЛАТА И ВОЗВРАТ</strong>
+        Возвратов нет. Технический предел исходника не является ошибкой сведения.
       </div>
     </div>
 
-    <a href="index.html" class="back-link">← НАЗАД</a>
+    <a href="index.html" class="back-link">← НАЗАД В ТЕРМИНАЛ</a>
   </div>
 
   <script>
@@ -45,4 +64,5 @@
     }
   </script>
 </body>
+
 </html>
