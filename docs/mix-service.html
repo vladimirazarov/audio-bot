@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <title>MIX / MASTER</title>
 </head>
-
 <body>
   <div class="container">
     <header class="service-header">
@@ -18,33 +16,31 @@
 
     <div class="content-wrapper">
       <div class="info-section">
-        <div class="info-item"><span>—</span> Реставрация и полировка вокала</div>
-        <div class="info-item"><span>—</span> Тайминг и коррекция темпа</div>
-        <div class="info-item"><span>—</span> Тюнинг (Auto-Tune / Melodyne)</div>
-        <div class="info-item"><span>—</span> Сведение (WAV / MP3 / STEMS)</div>
-        <div class="info-item"><span>—</span> Финальный MASTER</div>
+        <div class="info-item">Реставрация и полировка вокала</div>
+        <div class="info-item">Тайминг и коррекция темпа</div>
+        <div class="info-item">Тюнинг (Auto-Tune / Melodyne)</div>
+        <div class="info-item">Сведение (WAV / MP3 / STEMS)</div>
+        <div class="info-item">Финальный MASTER</div>
       </div>
 
       <div class="order-section">
-        <div class="price-main">10 EUR</div>
-        <div class="btn action" onclick="send('MIX', 10)">ЗАКАЗАТЬ (WAV)</div>
-
-        <div class="price-divider">или</div>
-
-        <div class="price-sub">20 EUR</div>
-        <div class="btn secondary" onclick="send('STEMS', 20)">ПО СТЭМАМ (TRACKOUT)</div>
+        <div class="btn action" onclick="send('MIX', 10)">ЗАКАЗАТЬ (VOICE+BEAT) — 10€</div>
+        <div class="btn secondary" onclick="send('STEMS', 20)">TRACKOUT (STEMS) — 20€</div>
       </div>
 
       <div class="terms-block">
         <h3 class="section-title">ПРАВИЛА ИГРЫ:</h3>
+        
         <div class="term-item">
           <strong>• ИСХОДНИКИ</strong>
           Выжимаю максимум из любого качества. Если запись слабая — делаю упор на стиль.
         </div>
+
         <div class="term-item">
-          <strong>• РЕЗУЛЬТАТ</strong>
-          Огромный опыт с «грязным» звуком. Смотри портфолио, чтобы понимать уровень.
+          <strong>• MP3 БИТЫ</strong>
+          Если у тебя бит в MP3 — результат будет достойным, но в пределах возможностей сжатого формата.
         </div>
+
         <div class="term-item">
           <strong>• REFUND</strong>
           Возвратов нет. Технический предел исходника не является ошибкой сведения.
@@ -52,7 +48,7 @@
       </div>
     </div>
 
-    <a href="index.html" class="btn back">← НАЗАД</a>
+    <a href="index.html" class="btn-back-link">← НАЗАД В ТЕРМИНАЛ</a>
   </div>
 
   <script>
@@ -64,5 +60,4 @@
     }
   </script>
 </body>
-
 </html>
