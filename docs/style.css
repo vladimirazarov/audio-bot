@@ -123,3 +123,14 @@ h1 {
     text-decoration: none;
     font-size: 11px;
 }
+
+/* Стили для аудио-плеера в стиле терминала */
+audio {
+    filter: invert(100%); /* Делает стандартный плеер белым/светлым под наш стиль */
+    height: 30px;
+    opacity: 0.8;
+}
+
+audio::-webkit-media-controls-enclosure {
+    background-color: #fff;
+}

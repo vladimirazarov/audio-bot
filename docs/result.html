@@ -1,43 +1,46 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=102">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <title>ПРИМЕРЫ РАБОТ</title>
 </head>
-
 <body>
   <div class="container">
     <h1>ПОРТФОЛИО</h1>
+    <p class="subtitle">Послушай, как меняется звук после обработки</p>
 
-    <div class="work-item">
-      <div class="audio-label"> before </div>
-      <audio controls src="audio/mix_before.mp3"></audio>
-      <div class="audio-label"> after </div>
-      <audio controls src="audio/mix_after.mp3"></audio>
+    <div class="terms-block">
+      <div class="term-title">КЕЙС: СЛОЖНЫЕ УСЛОВИЯ</div>
+      <div class="term-text">
+        <strong>Исходник:</strong> Вокал на телефон, бит из интернета (MP3).
+      </div>
+      
+      <div class="info-item">До обработки:</div>
+      <audio controls src="audio/case1_before.mp3" style="width: 100%; margin-bottom: 15px;"></audio>
+      
+      <div class="info-item">После обработки:</div>
+      <audio controls src="audio/case1_after.mp3" style="width: 100%;"></audio>
     </div>
 
-  <!--
-    <div class="work-item">
-      <div class="audio-label">GENRE: HIP-HOP / BOOM BAP</div>
-      <audio controls src="audio/tbd"></audio>
-
-      <div class="audio-label">GENRE: TRAP / CLOUD</div>
-      <audio controls src="audio/91-Gmaj-dontaskmewhy.mp3"></audio>
-
-      <div class="audio-label">GENRE: ROCK / GUITAR</div>
-      <audio controls src="audio/beat_rock.mp3"></audio>
-
-      <div class="audio-label">GENRE: EDM / HOUSE</div>
-      <audio controls src="audio/beat_edm.mp3"></audio>
+    <div class="terms-block" style="margin-top: 40px;">
+      <div class="term-title">КЕЙС: ТРЭП / АВТОТЮН</div>
+      <div class="term-text">
+        <strong>Исходник:</strong> Домашняя студия, качественный минус.
+      </div>
+      
+      <div class="info-item">До обработки:</div>
+      <audio controls src="audio/case2_before.mp3" style="width: 100%; margin-bottom: 15px;"></audio>
+      
+      <div class="info-item">После обработки:</div>
+      <audio controls src="audio/case2_after.mp3" style="width: 100%;"></audio>
     </div>
-  -->
 
-
-    <a href="index.html" class="btn btn-secondary">НАЗАД</a>
+    <a href="index.html" class="back-link" style="margin-bottom: 40px;">← НАЗАД В МЕНЮ</a>
   </div>
 
+  <script>window.Telegram.WebApp.expand();</script>
 </body>
-
 </html>
