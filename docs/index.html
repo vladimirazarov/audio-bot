@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
-
 <body>
   <div class="container">
     <h1>MAIME // ТЕРМИНАЛ</h1>
+    <p class="subtitle">SYSTEM ONLINE // SELECT TASK</p>
 
-    <!-- <div class="btn" onclick="send('BEAT', 5)">BEATS</div> -->
+    <div class="menu-section">
+        <span class="label">SERVICES:</span>
+        <a href="mix-service.html" class="btn">MIX / MASTER</a>
+        </div>
 
-    <a href="mix-service.html" class="btn">MIX / MASTER</a>
-    <a href="result.html" class="btn">ПРИМЕРЫ РАБОТ</a>
+    <div class="menu-section" style="margin-top: 30px;">
+        <span class="label">DATABASE:</span>
+        <a href="result.html" class="btn secondary-view">ПРИМЕРЫ РАБОТ</a>
+    </div>
   </div>
 
   <script>
     let tg = window.Telegram.WebApp;
     tg.expand();
-    function send(service, price) {
-      tg.sendData(JSON.stringify({ service: service, price: price }));
-      tg.close();
-    }
   </script>
 </body>
-
 </html>
