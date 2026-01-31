@@ -1,11 +1,50 @@
-/* Контейнеры для разделения кнопок на главной */
+/* БАЗОВЫЕ НАСТРОЙКИ СЕТКИ */
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 380px;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+/* ЗАГОЛОВКИ */
+h1 {
+    font-size: 22px;
+    letter-spacing: 5px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 15px;
+    margin: 0;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.subtitle {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #555;
+    letter-spacing: 2px;
+    margin: 15px 0 40px 0;
+}
+
+/* СЕКЦИИ И МЕТКИ (ДЛЯ INDEX) */
 .menu-section {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-/* Метки над кнопками (SERVICES / DATABASE) */
 .label {
     display: block;
     text-align: left;
@@ -16,14 +55,95 @@
     padding-left: 5px;
 }
 
-/* Особый стиль для кнопки примеров, чтобы она отличалась */
+/* ОСНОВНОЙ СТИЛЬ КНОПОК */
+.btn {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    transition: all 0.2s;
+    display: block;
+    text-align: center;
+    
+    /* Принудительные цвета для Telegram */
+    background-color: #000 !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+    font-size: 14px;
+    
+    /* Отступ снизу, чтобы не слипались */
+    margin-bottom: 15px; 
+}
+
+.btn:last-child {
+    margin-bottom: 0;
+}
+
+.btn:active {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+/* СТИЛЬ ДЛЯ ВТОРОСТЕПЕННЫХ КНОПОК (ПРИМЕРЫ РАБОТ) */
 .btn.secondary-view {
-    border: 1px solid #444 !important; /* Тонкая серая рамка вместо жирной белой */
-    color: #888 !important;            /* Серый текст */
+    border: 1px solid #444 !important;
+    color: #888 !important;
     font-size: 12px;
 }
 
-.btn.secondary-view:active {
-    background-color: #444 !important;
-    color: #fff !important;
+/* СТИЛИ ДЛЯ СТРАНИЦЫ УСЛУГ (MIX-SERVICE) */
+.info-section {
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.info-item {
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: #eee;
+    letter-spacing: 1px;
+}
+
+.terms-block {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #1a1a1a;
+    text-align: left;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+.term-item {
+    font-size: 11px;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.term-item strong {
+    color: #888;
+    display: block;
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-back-link {
+    margin-top: 40px;
+    color: #333;
+    text-decoration: none;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
 }
