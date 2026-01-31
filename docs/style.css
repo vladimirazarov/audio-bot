@@ -1,145 +1,153 @@
 body {
-    background-color: #0c0c0c;
-    color: #ffffff;
-    font-family: 'Courier New', monospace;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
+  background-color: #0c0c0c;
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .container {
-    width: 90%;
-    max-width: 400px;
-    padding: 30px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 90%;
+  max-width: 400px;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
-    font-size: 20px;
-    letter-spacing: 3px;
-    border-bottom: 1px solid #ffffff;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    width: 100%;
-    text-align: center;
+  font-size: 20px;
+  letter-spacing: 3px;
+  border-bottom: 1px solid #ffffff;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
 }
 
 .subtitle {
-    font-size: 11px;
-    color: #666;
-    margin-bottom: 40px;
-    text-align: center;
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
 /* Разделы меню */
 .menu-section {
-    width: 100%;
-    margin-bottom: 30px;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 .label {
-    display: block;
-    font-size: 10px;
-    color: #444;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+  display: block;
+  font-size: 10px;
+  color: #444;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 /* Кнопки */
 .btn {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 18px;
-    margin-bottom: 15px; /* Чтобы не слипались */
-    background: #000 !important;
-    border: 1px solid #fff !important;
-    color: #fff !important;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 13px;
-    text-align: center;
-    transition: 0.2s;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 18px;
+  margin-bottom: 15px;
+  /* Чтобы не слипались */
+  background: #000 !important;
+  border: 1px solid #fff !important;
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+  text-align: center;
+  transition: 0.2s;
 }
 
 .btn:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .btn:active {
-    background: #fff !important;
-    color: #000 !important;
+  background: #fff !important;
+  color: #000 !important;
 }
 
 /* Кнопка примеров (более спокойная) */
 .btn.secondary-view {
-    border-color: #333 !important;
-    color: #888 !important;
+  border-color: #333 !important;
+  color: #888 !important;
 }
 
 /* Список услуг */
 .info-section {
-    width: 100%;
-    margin-bottom: 30px;
-    text-align: left;
+  width: 100%;
+  margin-bottom: 30px;
+  text-align: left;
 }
 
 .info-item {
-    font-size: 13px;
-    margin-bottom: 8px;
-    padding-left: 10px;
-    border-left: 2px solid #333;
+  font-size: 13px;
+  margin-bottom: 8px;
+  padding-left: 10px;
+  border-left: 2px solid #333;
 }
 
 /* Блок правил */
 .terms-block {
-    text-align: left;
-    margin-top: 30px;
-    border-top: 1px solid #222;
-    padding-top: 20px;
+  text-align: left;
+  margin-top: 30px;
+  border-top: 1px solid #222;
+  padding-top: 20px;
 }
 
 .term-title {
-    font-size: 10px;
-    color: #555;
-    margin-bottom: 15px;
+  font-size: 10px;
+  color: #555;
+  margin-bottom: 15px;
 }
 
 .term-text {
-    font-size: 11px;
-    color: #888;
-    line-height: 1.4;
-    margin-bottom: 15px;
+  font-size: 11px;
+  color: #888;
+  line-height: 1.4;
+  margin-bottom: 15px;
 }
 
 .back-link {
-    margin-top: 30px;
-    color: #444;
-    text-decoration: none;
-    font-size: 11px;
+  margin-top: 30px;
+  color: #444;
+  text-decoration: none;
+  font-size: 11px;
 }
 
 /* Стили для аудио-плеера в стиле терминала */
 audio {
-    filter: invert(100%); /* Делает стандартный плеер белым/светлым под наш стиль */
-    height: 30px;
-    opacity: 0.8;
+  filter: invert(100%);
+  /* Делает стандартный плеер белым/светлым под наш стиль */
+  height: 30px;
+  opacity: 0.8;
 }
 
 audio::-webkit-media-controls-enclosure {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .btn-sub {
-    display: block;
-    font-size: 10px;
-    font-weight: normal;
-    opacity: 0.6;
-    margin-top: 4px;
-    letter-spacing: 1px;
+  display: block;
+  font-size: 10px;
+  /* Маленький размер для пояснения */
+  font-weight: normal;
+  /* Убираем жирность */
+  text-transform: none;
+  /* Убираем капс, так читается легче */
+  color: #888;
+  /* Делаем текст серым, чтобы не отвлекал от цены */
+  margin-top: 6px;
+  /* Отступ от верхнего текста */
+  line-height: 1.2;
 }
