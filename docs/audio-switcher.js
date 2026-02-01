@@ -1,40 +1,38 @@
 function togglePlay(id) {
-    const aBefore = document.getElementById('before-' + id);
-    const aAfter = document.getElementById('after-' + id);
-    const btn = document.getElementById('play-btn-' + id);
+    const before = document.getElementById(`before-${id}`);
+    const after = document.getElementById(`after-${id}`);
+    const btn = document.getElementById(`play-btn-${id}`);
 
-    if (aBefore.paused) {
-        // синхронизируем время перед запуском
-        aAfter.currentTime = aBefore.currentTime;
-        
-        // запускаем оба
-        Promise.all([aBefore.play(), aAfter.play()]).then(() => {
-            btn.innerText = 'STOP';
-            btn.classList.add('playing');
-        }).catch(e => console.error("ошибка воспроизведения:", e));
+    // принудительно устанавливаем зацикливание при первом взаимодействии
+    before.loop = true;
+    after.loop = true;
+
+    if (before.paused && after.paused) {
+        before.play();
+        after.play();
+        btn.innerText = "PAUSE";
     } else {
-        aBefore.pause();
-        aAfter.pause();
-        btn.innerText = 'PLAY';
-        btn.classList.remove('playing');
+        before.pause();
+        after.pause();
+        btn.innerText = "PLAY";
     }
 }
 
-function switchAudio(id, mode) {
-    const aBefore = document.getElementById('before-' + id);
-    const aAfter = document.getElementById('after-' + id);
-    const bBefore = document.getElementById('btn-before-' + id);
-    const bAfter = document.getElementById('btn-after-' + id);
+function switchAudio(id, type) {
+    const before = document.getElementById(`before-${id}`);
+    const after = document.getElementById(`after-${id}`);
+    const btnBefore = document.getElementById(`btn-before-${id}`);
+    const btnAfter = document.getElementById(`btn-after-${id}`);
 
-    if (mode === 'before') {
-        aBefore.muted = false;
-        aAfter.muted = true;
-        bBefore.classList.add('active');
-        bAfter.classList.remove('active');
+    if (type === 'before') {
+        before.muted = false;
+        after.muted = true;
+        btnBefore.classList.add('active');
+        btnAfter.classList.remove('active');
     } else {
-        aBefore.muted = true;
-        aAfter.muted = false;
-        bAfter.classList.add('active');
-        bBefore.classList.remove('active');
+        before.muted = true;
+        after.muted = false;
+        btnBefore.classList.remove('active');
+        btnAfter.classList.add('active');
     }
 }
