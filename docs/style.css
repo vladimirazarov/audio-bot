@@ -97,12 +97,13 @@ h1 {
   border-left: 2px solid #333;
 }
 
-/* Блок правил */
+/* фиксим ширину блоков кейсов */
 .terms-block {
+  width: 100%;
   text-align: left;
-  margin-top: 30px;
+  margin-top: 40px;
   border-top: 1px solid #222;
-  padding-top: 20px;
+  padding-top: 25px;
 }
 
 .term-title {
@@ -126,11 +127,15 @@ h1 {
 }
 
 /* Стили для аудио-плеера в стиле терминала */
+/* плеер должен занимать всю ширину, чтобы кнопки «до/после» были на одной линии */
 audio {
   filter: invert(100%);
-  /* Делает стандартный плеер белым/светлым под наш стиль */
-  height: 30px;
-  opacity: 0.8;
+  height: 35px;
+  opacity: 0.9;
+  width: 100%;
+  margin-top: 5px;
+  border-radius: 4px;
+  /* чтобы плеер не выглядел инородно */
 }
 
 audio::-webkit-media-controls-enclosure {
@@ -150,4 +155,89 @@ audio::-webkit-media-controls-enclosure {
   margin-top: 6px;
   /* Отступ от верхнего текста */
   line-height: 1.2;
+}
+
+.disclaimer {
+  font-size: 11px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid #333;
+  text-transform: lowercase;
+}
+
+/* отзыв: делаем акцент на тексте, но сохраняем строгость */
+.review-quote {
+  margin-top: 20px;
+  padding: 15px;
+  background: #111;
+  /* легкая подложка, чтобы отделить отзыв от плееров */
+  border-top: none;
+  border-left: 1px solid #333;
+  /* вертикальная черта вместо верхней */
+  font-style: italic;
+  font-size: 13px;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+.user-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-style: normal;
+  display: block;
+  /* никнейм над отзывом */
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+
+.user-link:hover {
+  text-decoration: underline;
+}
+
+.ab-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin: 15px 0;
+}
+
+.switch-group {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-main-play {
+  background: #000;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 12px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-main-play.playing {
+  background: #fff;
+  color: #000;
+}
+
+.btn-ab {
+  background: #000;
+  border: 1px solid #333;
+  color: #666;
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+  flex: 1;
+  cursor: pointer;
+  text-transform: lowercase;
+}
+
+.btn-ab.active {
+  border-color: #fff;
+  color: #fff;
 }
