@@ -5,43 +5,69 @@ function togglePlay(id) {
     const after = document.getElementById(`after-${id}`);
     const btn = document.getElementById(`play-btn-${id}`);
 
-    // 1. если играет другой трек — останавливаем его
+    // 1. убиваем другие треки
     if (currentActiveId !== null && currentActiveId !== id) {
         stopAudio(currentActiveId);
     }
 
-    if (before.paused) {
-        // 2. критический фикс: если трек доиграл до конца или был на паузе,
-        // сбрасываем время в начало, если мы не "посередине" трека.
-        // для надежности лупинга проверяем ended.
-        if (before.ended || after.ended || before.currentTime >= before.duration) {
-            before.currentTime = 0;
-            after.currentTime = 0;
+    // 2. вешаем "умный" лупер через timeupdate
+    // мы проверяем время каждый тик воспроизведения
+    if (!before.ontimeupdate) {
+        before.ontimeupdate = function() {
+            checkLoop(before, after);
+        };
+    }
+
+    // 3. логика кнопки
+    if (before.paused || before.ended) {
+        // РЕАНИМАЦИЯ: если трек все-таки умер (ended) или стоит в конце
+        if (before.ended || before.currentTime >= before.duration - 0.5) {
+             // .load() принудительно перезагружает манифест файла, выводя из состояния "зомби"
+             before.load(); 
+             after.load();
+             before.currentTime = 0;
+             after.currentTime = 0;
         }
 
-        // синхронизируем каналы перед запуском (убираем эхо при рассинхроне)
+        // синхронизация перед пуском
         if (Math.abs(before.currentTime - after.currentTime) > 0.1) {
             after.currentTime = before.currentTime;
         }
 
-        // промисы play() нужны для обработки политик автоплея,
-        // но здесь мы просто запускаем.
-        before.play();
-        after.play();
-        
+        // промисы для отлова ошибок (например, если юзер не взаимодействовал)
+        const p = before.play();
+        if (p !== undefined) {
+            p.then(_ => {
+                after.play();
+            }).catch(error => {
+                console.log("Auto-play prevented", error);
+            });
+        } else {
+             after.play();
+        }
+
         btn.innerText = "PAUSE";
         currentActiveId = id;
     } else {
-        // пауза
         before.pause();
         after.pause();
         btn.innerText = "PLAY";
-        // не сбрасываем currentActiveId в null здесь, 
-        // чтобы при повторном нажатии мы знали, что это тот же трек
     }
 }
 
-// отдельная функция для полной остановки (нужна для кнопки назад и смены треков)
+// функция "бесшовной" петли
+function checkLoop(master, slave) {
+    const buffer = 0.25; // 250мс до конца
+    
+    // если длительность известна и мы подошли к концу
+    if (master.duration > 0 && master.currentTime > (master.duration - buffer)) {
+        master.currentTime = 0;
+        slave.currentTime = 0;
+        // мы НЕ вызываем play(), потому что он и так играет.
+        // мы просто перенесли головку назад. браузер думает, что песня продолжается.
+    }
+}
+
 function stopAudio(id) {
     const before = document.getElementById(`before-${id}`);
     const after = document.getElementById(`after-${id}`);
@@ -49,7 +75,8 @@ function stopAudio(id) {
 
     if (before) {
         before.pause();
-        before.currentTime = 0; // отмотка в начало
+        before.ontimeupdate = null; // снимаем слушатель для экономии CPU
+        before.currentTime = 0;
     }
     if (after) {
         after.pause();
@@ -77,7 +104,6 @@ function switchAudio(id, type) {
     }
 }
 
-// глобальная функция для остановки всего (для кнопки назад)
 function stopAllPlayback() {
     if (currentActiveId !== null) {
         stopAudio(currentActiveId);
