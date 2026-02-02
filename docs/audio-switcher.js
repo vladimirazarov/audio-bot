@@ -6,34 +6,30 @@ function togglePlay(id) {
   const after = document.getElementById(`after-${id}`);
   const btn = document.getElementById(`play-btn-${id}`);
 
-  // остановка другого трека, если он играет
   if (currentActiveId !== null && currentActiveId !== id) {
     stopAudio(currentActiveId);
   }
 
   if (before.paused) {
-    // 1. синхронизируем время перед запуском
-    after.currentTime = before.currentTime;
-
-    // 2. запускаем оба потока
+    // сначала запускаем — это "прогревает" аудио-контекст
     before.play();
     after.play();
+
     btn.innerText = "PAUSE";
     currentActiveId = id;
 
-    // 3. запуск принудительной синхронизации (исправление эхо)
+    // запуск синхронизации с небольшой задержкой, чтобы не вешать поток при старте
     if (syncInterval) clearInterval(syncInterval);
     syncInterval = setInterval(() => {
-      if (!before.paused) {
-        // если разбег более 15 миллисекунд — выравниваем
-        if (Math.abs(before.currentTime - after.currentTime) > 0.015) {
+      if (!before.paused && before.readyState >= 2 && after.readyState >= 2) {
+        // если разбег критичен — подтягиваем
+        if (Math.abs(before.currentTime - after.currentTime) > 0.02) {
           after.currentTime = before.currentTime;
         }
       }
-    }, 40); // частота проверки 40мс для плавности
+    }, 50);
 
   } else {
-    // постановка на паузу
     before.pause();
     after.pause();
     btn.innerText = "PLAY";
@@ -69,20 +65,13 @@ function stopAudio(id) {
   const a = document.getElementById(`after-${id}`);
   const btn = document.getElementById(`play-btn-${id}`);
 
-  // очистка интервала при полной остановке
   if (syncInterval) {
     clearInterval(syncInterval);
     syncInterval = null;
   }
 
-  if (b) {
-    b.pause();
-    b.currentTime = 0;
-  }
-  if (a) {
-    a.pause();
-    a.currentTime = 0;
-  }
+  if (b) { b.pause(); b.currentTime = 0; }
+  if (a) { a.pause(); a.currentTime = 0; }
   if (btn) btn.innerText = "PLAY";
 }
 
