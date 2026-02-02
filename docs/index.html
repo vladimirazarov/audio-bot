@@ -28,8 +28,8 @@
       <div class="ab-controls">
         <button onclick="togglePlay(1)" id="play-btn-1" class="btn-main-play">PLAY</button>
         <div class="switch-group">
-          <button onclick="switchAudio(1, 'before')" id="btn-before-1" class="btn-ab">ДО</button>
           <button onclick="switchAudio(1, 'after')" id="btn-after-1" class="btn-ab active">ПОСЛЕ</button>
+          <button onclick="switchAudio(1, 'before')" id="btn-before-1" class="btn-ab">ДО</button>
         </div>
       </div>
 
@@ -44,7 +44,7 @@
 
   <script>
     window.Telegram.WebApp.expand();
-    
+
     // разблокировка аудио контекста
     document.body.addEventListener('touchstart', function () {
       const audios = document.querySelectorAll('audio');
@@ -56,4 +56,5 @@
     }, { once: true });
   </script>
 </body>
+
 </html>
