@@ -1,47 +1,33 @@
-let currentActiveId = null;
-const syncIntervals = {};
+/**
+ * аудио-свитчер для сравнения "до" и "после"
+ * логика базируется на параллельном воспроизведении и мьютировании одного из каналов
+ */
+
+const audioStates = {};
 
 function togglePlay(id) {
   const before = document.getElementById(`before-${id}`);
   const after = document.getElementById(`after-${id}`);
-  const btn = document.getElementById(`play-btn-${id}`);
+  const playBtn = document.getElementById(`play-btn-${id}`);
 
-  if (!before || !after || !btn) return;
+  if (!before || !after) return;
 
-  // остановить другой трек
-  if (currentActiveId !== null && currentActiveId !== id) {
-    stopAudio(currentActiveId);
-  }
+  if (before.paused) {
+    // синхронизация перед запуском
+    after.currentTime = before.currentTime;
 
-  const isPlaying = !before.paused || !after.paused;
-
-  if (!isPlaying) {
-    // АКТИВНЫЙ = НЕ muted
-    const primary = before.muted ? after : before;
-    const secondary = before.muted ? before : after;
-
-    // выравнивание перед стартом
-    secondary.currentTime = primary.currentTime;
-
-    primary.play().then(() => {
-      secondary.play().catch(() => {});
-    }).catch(() => {});
-
-    btn.textContent = "PAUSE";
-    currentActiveId = id;
-
-    clearInterval(syncIntervals[id]);
-    syncIntervals[id] = setInterval(() => {
-      if (!primary.paused) {
-        const diff = Math.abs(primary.currentTime - secondary.currentTime);
-        if (diff > 0.02) {
-          secondary.currentTime = primary.currentTime;
-        }
-      }
-    }, 40);
-
+    // запуск обеих дорожек
+    Promise.all([before.play(), after.play()])
+      .then(() => {
+        playBtn.innerText = "PAUSE";
+        playBtn.classList.add('playing');
+      })
+      .catch(err => console.error("ошибка воспроизведения:", err));
   } else {
-    stopAudio(id);
+    before.pause();
+    after.pause();
+    playBtn.innerText = "PLAY";
+    playBtn.classList.remove('playing');
   }
 }
 
@@ -51,45 +37,37 @@ function switchAudio(id, type) {
   const btnBefore = document.getElementById(`btn-before-${id}`);
   const btnAfter = document.getElementById(`btn-after-${id}`);
 
-  if (!before || !after) return;
-
   if (type === 'before') {
+    // включаем "до", выключаем "после"
     before.muted = false;
     after.muted = true;
+
     btnBefore.classList.add('active');
     btnAfter.classList.remove('active');
   } else {
+    // включаем "после", выключаем "до"
     before.muted = true;
     after.muted = false;
+
     btnAfter.classList.add('active');
     btnBefore.classList.remove('active');
   }
-}
 
-function stopAudio(id) {
-  const before = document.getElementById(`before-${id}`);
-  const after = document.getElementById(`after-${id}`);
-  const btn = document.getElementById(`play-btn-${id}`);
-
-  clearInterval(syncIntervals[id]);
-  delete syncIntervals[id];
-
-  if (before) {
-    before.pause();
-    before.currentTime = 0;
+  // форсированная синхронизация фазы при переключении
+  if (!before.paused) {
+    after.currentTime = before.currentTime;
   }
-
-  if (after) {
-    after.pause();
-    after.currentTime = 0;
-  }
-
-  if (btn) btn.textContent = "PLAY";
-  if (currentActiveId === id) currentActiveId = null;
 }
 
 function stopAllPlayback() {
-  if (currentActiveId !== null) {
-    stopAudio(currentActiveId);
-  }
+  const allAudio = document.querySelectorAll('audio');
+  allAudio.forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
 }
+
+// обработка прерываний (например, закрытие webapp или звонок)
+window.addEventListener('blur', () => {
+  // опционально: ставить на паузу при сворачивании
+});
