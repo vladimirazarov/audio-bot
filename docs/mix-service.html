@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css?v=105">
+  <link rel="stylesheet" href="style.css?v=107">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <title>MIX / MASTER</title>
 </head>
-
 <body>
   <div class="container">
     <h1>СВЕДЕНИЕ / МАСТЕРИНГ</h1>
-    <p class="subtitle">Твой звук — моя ответственность.</p>
+    <p class="subtitle">твой звук — моя ответственность.</p>
 
-    <div class="info-section">
-      <div class="info-item">Реставрация и полировка вокала</div>
-      <div class="info-item">Тайминг и коррекция темпа</div>
-      <div class="info-item">Исправление фальшивых нот (тюнинг)</div>
-      <div class="info-item">Сведение (WAV / MP3 / STEMS)</div>
-      <div class="info-item">Финальный мастеринг</div>
+    <div class="features-grid">
+      <div class="feature-card">вокал: тюнинг, тайминг, реставрация</div>
+      <div class="feature-card">бит: сведение (wav/mp3/stems)</div>
+      <div class="feature-card">финал: мастеринг под площадки</div>
     </div>
 
     <div class="menu-section">
-      <div class="btn" onclick="send('MIX', 10)">
-        ГОЛОС + БИТ — 10€
-        <span class="btn-sub">выбирай, если у тебя вокал и одна дорожка бита</span>
+      <div class="btn main-service" onclick="send('MIX', 10)">
+        <div class="btn-price">10€</div>
+        <div class="btn-title">ГОЛОС + БИТ</div>
+        <div class="btn-sub">вокал и одна дорожка минуса</div>
       </div>
 
-      <div class="btn" onclick="send('STEMS', 20)">
-        ПО ДОРОЖКАМ — 20€
-        <span class="btn-sub">выбирай, если у тебя вокал и бит, который разбит на отдельные инструменты</span>
+      <div class="btn main-service" onclick="send('STEMS', 20)">
+        <div class="btn-price">20€</div>
+        <div class="btn-title">ПО ДОРОЖКАМ (STEMS)</div>
+        <div class="btn-sub">вокал и разгруппированный бит</div>
       </div>
     </div>
 
-
     <div class="terms-block">
-      <div class="term-title">ПРАВИЛА ИГРЫ:</div>
+      <div class="term-title">УСЛОВИЯ РАБОТЫ:</div>
 
-      <div class="term-text">
+      <div class="term-item">
+        <strong>• ТРИ КРУГА ПРАВОК</strong>
+        <p>включены в стоимость. сюда входят технические исправления и творческие задачи («сделай как у него», «накинь эффектов»). всё, что свыше — 5€/круг.</p>
+      </div>
+
+      <div class="term-item">
         <strong>• ИСХОДНИКИ</strong>
-        Выжимаю максимум из любого качества. Если запись слабая — делаю упор на стиль.
+        <p>выжимаю максимум из любого качества. если запись слабая — делаем упор на стиль и спецэффекты.</p>
       </div>
 
-      <div class="term-text">
+      <div class="term-item">
         <strong>• MP3 БИТЫ</strong>
-        Если у тебя бит в MP3 — результат будет достойным, но в пределах возможностей сжатого формата.
+        <p>работать с mp3 можно, результат будет достойным, но в пределах возможностей сжатого формата.</p>
       </div>
 
-      <div class="term-text">
-        <strong>• ОПЛАТА И ВОЗВРАТ</strong>
-        Возвратов нет. Технический предел исходника не является ошибкой сведения.
+      <div class="term-item">
+        <strong>• ФИНАЛ</strong>
+        <p>возвратов нет. технический предел ваших исходников не является ошибкой сведения. я за честный звук.</p>
       </div>
     </div>
 
@@ -59,11 +61,12 @@
 
   <script>
     let tg = window.Telegram.WebApp;
+    tg.expand();
+    
     function send(service, price) {
       tg.sendData(JSON.stringify({ service: service, price: price }));
       tg.close();
     }
   </script>
 </body>
-
 </html>
