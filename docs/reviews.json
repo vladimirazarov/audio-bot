@@ -8,15 +8,5 @@
     "genre": "BOOM BAP",
     "setup": "запись: бюджетный usb-микрофон, дома",
     "created_at": "2026-02-01"
-  },
-  {
-    "id": 2,
-    "author": "@id_8329131839",
-    "text": "норм ваще имбулечка",
-    "audio_before": "audio/TODO_BEFORE.mp3",
-    "audio_after": "audio/TODO_AFTER.mp3",
-    "genre": "MIXING",
-    "setup": "запись клиента",
-    "created_at": "2026-02-02 05:19"
   }
 ]
