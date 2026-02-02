@@ -16,16 +16,16 @@ function togglePlay(id) {
   const isPlaying = !before.paused || !after.paused;
 
   if (!isPlaying) {
-    // определить активный (НЕ muted)
+    // АКТИВНЫЙ = НЕ muted
     const primary = before.muted ? after : before;
     const secondary = before.muted ? before : after;
 
+    // выравнивание перед стартом
     secondary.currentTime = primary.currentTime;
 
-    // ВАЖНО: первым запускаем НЕ muted
     primary.play().then(() => {
-      secondary.play().catch(() => { });
-    }).catch(() => { });
+      secondary.play().catch(() => {});
+    }).catch(() => {});
 
     btn.textContent = "PAUSE";
     currentActiveId = id;
@@ -33,8 +33,9 @@ function togglePlay(id) {
     clearInterval(syncIntervals[id]);
     syncIntervals[id] = setInterval(() => {
       if (!primary.paused) {
-        if (Math.abs(before.currentTime - after.currentTime) > 0.02) {
-          after.currentTime = before.currentTime;
+        const diff = Math.abs(primary.currentTime - secondary.currentTime);
+        if (diff > 0.02) {
+          secondary.currentTime = primary.currentTime;
         }
       }
     }, 40);
