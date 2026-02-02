@@ -10,9 +10,7 @@ function togglePlay(id) {
   }
 
   if (before.paused) {
-    // синхронизируем на всякий случай перед стартом
     after.currentTime = before.currentTime;
-
     before.play();
     after.play();
     btn.innerText = "PAUSE";

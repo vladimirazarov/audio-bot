@@ -22,14 +22,14 @@
       <div class="term-title">ЖАНР: BOOM BAP / HIP-HOP</div>
       <div class="setup-info">запись: бюджетный usb-микрофон, дома </div>
 
-      <audio id="before-1" src="audio/chroniki-before.mp3" preload="auto" playsinline></audio>
-      <audio id="after-1" src="audio/chroniki-after.mp3" preload="auto" playsinline muted></audio>
+      <audio id="before-1" src="audio/chroniki-before.mp3" preload="auto" loop muted playsinline></audio>
+      <audio id="after-1" src="audio/chroniki-after.mp3" preload="auto" loop playsinline></audio>
 
       <div class="ab-controls">
         <button onclick="togglePlay(1)" id="play-btn-1" class="btn-main-play">PLAY</button>
         <div class="switch-group">
-          <button onclick="switchAudio(1, 'before')" id="btn-before-1" class="btn-ab active">ДО</button>
-          <button onclick="switchAudio(1, 'after')" id="btn-after-1" class="btn-ab">ПОСЛЕ</button>
+          <button onclick="switchAudio(1, 'after')" id="btn-after-1" class="btn-ab active">ПОСЛЕ</button>
+          <button onclick="switchAudio(1, 'before')" id="btn-before-1" class="btn-ab">ДО</button>
         </div>
       </div>
 
@@ -45,18 +45,6 @@
 
   <script>
     window.Telegram.WebApp.expand();
-
-    // фикс для некоторых версий iOS: разблокировка аудио по первому тапу в любом месте
-    document.body.addEventListener('touchstart', function () {
-      const audios = document.querySelectorAll('audio');
-      audios.forEach(audio => {
-        if (audio.paused && audio.currentTime === 0) {
-          audio.play().then(() => {
-            audio.pause(); // моментально ставим на паузу, просто чтобы снять блок
-          }).catch(() => { });
-        }
-      });
-    }, { once: true });
   </script>
 </body>
 
