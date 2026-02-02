@@ -1,43 +1,46 @@
 let currentActiveId = null;
-let syncInterval = null;
+const syncIntervals = {};
 
 function togglePlay(id) {
   const before = document.getElementById(`before-${id}`);
   const after = document.getElementById(`after-${id}`);
   const btn = document.getElementById(`play-btn-${id}`);
 
+  if (!before || !after || !btn) return;
+
+  // остановить другой трек
   if (currentActiveId !== null && currentActiveId !== id) {
     stopAudio(currentActiveId);
   }
 
-  if (before.paused) {
-    // сначала запускаем — это "прогревает" аудио-контекст
-    before.play();
-    after.play();
+  const isPlaying = !before.paused || !after.paused;
 
-    btn.innerText = "PAUSE";
+  if (!isPlaying) {
+    // определить активный (НЕ muted)
+    const primary = before.muted ? after : before;
+    const secondary = before.muted ? before : after;
+
+    secondary.currentTime = primary.currentTime;
+
+    // ВАЖНО: первым запускаем НЕ muted
+    primary.play().then(() => {
+      secondary.play().catch(() => { });
+    }).catch(() => { });
+
+    btn.textContent = "PAUSE";
     currentActiveId = id;
 
-    // запуск синхронизации с небольшой задержкой, чтобы не вешать поток при старте
-    if (syncInterval) clearInterval(syncInterval);
-    syncInterval = setInterval(() => {
-      if (!before.paused && before.readyState >= 2 && after.readyState >= 2) {
-        // если разбег критичен — подтягиваем
+    clearInterval(syncIntervals[id]);
+    syncIntervals[id] = setInterval(() => {
+      if (!primary.paused) {
         if (Math.abs(before.currentTime - after.currentTime) > 0.02) {
           after.currentTime = before.currentTime;
         }
       }
-    }, 50);
+    }, 40);
 
   } else {
-    before.pause();
-    after.pause();
-    btn.innerText = "PLAY";
-
-    if (syncInterval) {
-      clearInterval(syncInterval);
-      syncInterval = null;
-    }
+    stopAudio(id);
   }
 }
 
@@ -47,6 +50,8 @@ function switchAudio(id, type) {
   const btnBefore = document.getElementById(`btn-before-${id}`);
   const btnAfter = document.getElementById(`btn-after-${id}`);
 
+  if (!before || !after) return;
+
   if (type === 'before') {
     before.muted = false;
     after.muted = true;
@@ -55,29 +60,35 @@ function switchAudio(id, type) {
   } else {
     before.muted = true;
     after.muted = false;
-    btnBefore.classList.remove('active');
     btnAfter.classList.add('active');
+    btnBefore.classList.remove('active');
   }
 }
 
 function stopAudio(id) {
-  const b = document.getElementById(`before-${id}`);
-  const a = document.getElementById(`after-${id}`);
+  const before = document.getElementById(`before-${id}`);
+  const after = document.getElementById(`after-${id}`);
   const btn = document.getElementById(`play-btn-${id}`);
 
-  if (syncInterval) {
-    clearInterval(syncInterval);
-    syncInterval = null;
+  clearInterval(syncIntervals[id]);
+  delete syncIntervals[id];
+
+  if (before) {
+    before.pause();
+    before.currentTime = 0;
   }
 
-  if (b) { b.pause(); b.currentTime = 0; }
-  if (a) { a.pause(); a.currentTime = 0; }
-  if (btn) btn.innerText = "PLAY";
+  if (after) {
+    after.pause();
+    after.currentTime = 0;
+  }
+
+  if (btn) btn.textContent = "PLAY";
+  if (currentActiveId === id) currentActiveId = null;
 }
 
 function stopAllPlayback() {
   if (currentActiveId !== null) {
     stopAudio(currentActiveId);
-    currentActiveId = null;
   }
 }

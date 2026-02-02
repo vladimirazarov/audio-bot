@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="style.css?v=106">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script src="audio-switcher.js"></script>
+  <script defer src="audio-switcher.js"></script>
+
   <title>ПРИМЕРЫ РАБОТ</title>
 </head>
 
 <body>
+
   <div class="container">
+
     <h1>МАЙМИ / РЕЗУЛЬТАТ</h1>
 
     <div class="disclaimer">
@@ -19,33 +22,72 @@
     </div>
 
     <div class="terms-block">
-      <div class="term-title">ЖАНР: BOOM BAP / HIP-HOP</div>
-      <div class="setup-info">запись: бюджетный usb-микрофон, дома </div>
 
-      <audio id="before-1" src="audio/chroniki-before.mp3" preload="auto" loop muted playsinline></audio>
-      <audio id="after-1" src="audio/chroniki-after.mp3" preload="auto" loop playsinline></audio>
+      <div class="term-title">ЖАНР: BOOM BAP / HIP-HOP</div>
+      <div class="setup-info">запись: бюджетный usb-микрофон, дома</div>
+
+      <audio
+        id="before-1"
+        src="audio/chroniki-before.mp3"
+        preload="auto"
+        loop
+        muted
+        playsinline>
+      </audio>
+
+      <audio
+        id="after-1"
+        src="audio/chroniki-after.mp3"
+        preload="auto"
+        loop
+        playsinline>
+      </audio>
 
       <div class="ab-controls">
-        <button onclick="togglePlay(1)" id="play-btn-1" class="btn-main-play">PLAY</button>
+        <button
+          onclick="togglePlay(1)"
+          id="play-btn-1"
+          class="btn-main-play">
+          PLAY
+        </button>
+
         <div class="switch-group">
-          <button onclick="switchAudio(1, 'after')" id="btn-after-1" class="btn-ab active">ПОСЛЕ</button>
-          <button onclick="switchAudio(1, 'before')" id="btn-before-1" class="btn-ab">ДО</button>
+          <button
+            onclick="switchAudio(1, 'after')"
+            id="btn-after-1"
+            class="btn-ab active">
+            ПОСЛЕ
+          </button>
+
+          <button
+            onclick="switchAudio(1, 'before')"
+            id="btn-before-1"
+            class="btn-ab">
+            ДО
+          </button>
         </div>
       </div>
 
+      <!-- ОТЗЫВ НЕ ТРОНУТ -->
       <div class="review-quote">
-        <a href="https://t.me/DimitryKucherov" target="_blank" class="user-link">@DimitryKucherov</a>:
+        <a href="https://t.me/DimitryKucherov" target="_blank" class="user-link">
+          @DimitryKucherov
+        </a>:
         звук огонь! вытягивает слабые места начинающего артиста, после финального результата в шоке от того, как круто
         может звучать самописный трек
       </div>
+
     </div>
 
-    <a href="index.html" class="back-link" onclick="stopAllPlayback()">← НАЗАД В МЕНЮ</a>
+    <a href="index.html" class="back-link" onclick="stopAllPlayback()">
+      ← НАЗАД В МЕНЮ
+    </a>
+
   </div>
 
   <script>
-    window.Telegram.WebApp.expand();
+    Telegram.WebApp.expand();
   </script>
-</body>
 
+</body>
 </html>
