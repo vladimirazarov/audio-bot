@@ -52,9 +52,13 @@ function stopAudio(id) {
   if (btn) btn.innerText = "PLAY";
 }
 
-function stopAllPlayback() {
-  if (currentActiveId !== null) {
-    stopAudio(currentActiveId);
-    currentActiveId = null;
-  }
+function stopAllAndGoBack(event) {
+  // предотвращаем стандартный переход, чтобы сначала выполнить стоп
+  if (event) event.preventDefault();
+
+  // останавливаем всё
+  stopAllPlayback();
+
+  // принудительно переходим на главную
+  window.location.href = 'index.html';
 }
