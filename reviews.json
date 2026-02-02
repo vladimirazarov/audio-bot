@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "author": "@DimitryKucherov",
+    "text": "звук огонь! вытягивает слабые места начинающего артиста, после финального результата в шоке от того, как круто может звучать самописный трек",
+    "audio_before": "audio/chroniki-before.mp3",
+    "audio_after": "audio/chroniki-after.mp3",
+    "genre": "BOOM BAP",
+    "setup": "запись: бюджетный usb-микрофон, дома",
+    "created_at": "2026-02-01"
+  }
+]
