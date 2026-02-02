@@ -35,7 +35,8 @@
 
       <div class="review-quote">
         <a href="https://t.me/DimitryKucherov" target="_blank" class="user-link">@DimitryKucherov</a>:
-        звук огонь! вытягивает слабые места начинающего артиста...
+        звук огонь! вытягивает слабые места начинающего артиста, после финального результата в шоке от того, как круто
+        может звучать самописный трек
       </div>
     </div>
 
@@ -45,12 +46,14 @@
   <script>
     window.Telegram.WebApp.expand();
 
-    // разблокировка аудио контекста
+    // разблокировка аудио контекста для мобильных устройств
     document.body.addEventListener('touchstart', function () {
       const audios = document.querySelectorAll('audio');
       audios.forEach(audio => {
         if (audio.paused && audio.currentTime === 0) {
-          audio.play().then(() => { audio.pause(); }).catch(() => { });
+          audio.play().then(() => {
+            audio.pause();
+          }).catch(() => { });
         }
       });
     }, { once: true });
