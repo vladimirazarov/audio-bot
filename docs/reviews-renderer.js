@@ -1,15 +1,15 @@
 async function initReviews() {
-    const container = document.getElementById('reviews-container');
-    
-    try {
-        const response = await fetch('reviews.json');
-        const reviews = await response.json();
+  const container = document.getElementById('reviews-container');
 
-        reviews.forEach(review => {
-            const reviewElement = document.createElement('div');
-            reviewElement.className = 'terms-block';
-            
-            reviewElement.innerHTML = `
+  try {
+    const response = await fetch('reviews.json');
+    const reviews = await response.json();
+
+    reviews.forEach(review => {
+      const reviewElement = document.createElement('div');
+      reviewElement.className = 'terms-block';
+
+      reviewElement.innerHTML = `
                 <div class="term-title">ЖАНР: ${review.genre || 'НЕ УКАЗАН'}</div>
                 <div class="setup-info">${review.setup || 'запись: информация отсутствует'}</div>
 
@@ -38,12 +38,12 @@ async function initReviews() {
                     ${review.text}
                 </div>
             `;
-            container.appendChild(reviewElement);
-        });
-    } catch (error) {
-        console.error('ошибка загрузки отзывов:', error);
-        container.innerHTML = '<div class="disclaimer">ошибка загрузки данных</div>';
-    }
+      container.appendChild(reviewElement);
+    });
+  } catch (error) {
+    console.error('ошибка загрузки отзывов:', error);
+    container.innerHTML = '<div class="disclaimer">ошибка загрузки данных</div>';
+  }
 }
 
 // запускаем при загрузке документа
