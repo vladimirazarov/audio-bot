@@ -13,8 +13,8 @@
     "id": 2,
     "author": "@LuxuryIdentity",
     "text": "",
-    "audio_before": "audio/relapse-before.mp3",
-    "audio_after": "audio/relapse-after.mp3",
+    "audio_before": "audio/relapse-before1.mp3",
+    "audio_after": "audio/relapse-after1.mp3",
     "genre": "HIP-HOP",
     "setup": "запись: клипированный исходник, дешёвый микрофон",
     "created_at": "2026-02-07"
