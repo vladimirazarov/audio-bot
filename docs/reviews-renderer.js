@@ -2,7 +2,7 @@ async function initReviews() {
   const container = document.getElementById('reviews-container');
 
   try {
-    const response = await fetch('./reviews.json');
+    const response = await fetch(`./reviews.json?v=${new Date().getTime()}`);
     const reviews = await response.json();
 
     reviews.forEach(review => {
