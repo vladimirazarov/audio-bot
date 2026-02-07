@@ -8,5 +8,15 @@
     "genre": "BOOM BAP",
     "setup": "запись: бюджетный usb-микрофон, дома",
     "created_at": "2026-02-01"
+  },
+  {
+    "id": 2,
+    "author": "@LuxuryIdentity",
+    "text": "",
+    "audio_before": "audio/relapse-before.mp3",
+    "audio_after": "audio/relapse-after.mp3",
+    "genre": "HIP-HOP",
+    "setup": "запись: клипированный исходник, дешёвый микрофон",
+    "created_at": "2026-02-07"
   }
 ]
